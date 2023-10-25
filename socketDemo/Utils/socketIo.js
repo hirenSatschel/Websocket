@@ -1,9 +1,13 @@
+import {Platform} from 'react-native';
 import SocketIOClient from 'socket.io-client';
-const SOCKET_URL = 'http://localhost:3000/';
+const SOCKET_URL = 'wss://socketsbay.com/wss/v2/2/demo/';
+// 'wss://demo.piesocket.com/v3/channel_123?api_key=6Lpd8h1JpVkCz0t7LBlUpsQSve7khRMUZBAZPILn&notify_self';
+// 'http://35.154.76.187:3500/';
 
 class WebService {
   initializeSocket = async () => {
     try {
+      let callerId = Platform.OS === 'android' ? '123' : '456';
       this.socket = SocketIOClient(SOCKET_URL, {
         transports: ['websocket'],
       });
